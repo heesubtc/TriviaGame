@@ -7,17 +7,10 @@
     font-size: 35px;
 }
 
-#jumbo {
-    position: relative;
-}
-
-
 #giphy {
     visibility: hidden;
-    position: absolute;
-    float: right;
 }
 
 input[type="radio"] {
-    transform: scale(1.4);
+    transform: scale(1.5);
 }

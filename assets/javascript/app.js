@@ -1,19 +1,18 @@
 // console.log("hello");
+
 // VARS
 var correct = 0;
 var incorrect = 0;
-var question1 = $("input.question1").val();
-var question2 = $("input.question2").val();
-var question3 = $("input.question3").val();
-var question4 = $("input.question4").val();
-var question5 = $("input.question5").val();
 var clock = $("p#clock")
 var timer = 0;
-var timeleft = 7;
+var timeleft = 9;
 
 // PLAY GAME BUTTON THAT CALLS CLOCK COUNTDOWN FUNCTION
+// RESET RADIO BUTTONS WHEN CLICKED
+$("#questionaire").hide();
 $("#start-button").on("click", function() {
-    $("h1#jumbo").text("Totally Trivial Trivia!");
+    $("#questionaire").show();
+    $("h1#jumbo").text("Totally Random Trivia!");
     countDown();
     $("h3#number-correct").empty();       
     $("h3#number-incorrect").empty();
@@ -33,13 +32,20 @@ function countDown() {
             clearInterval(interval); 
             $("h1#jumbo").empty();
             $("h1#jumbo").text("Times Up!");
-            timeleft += 7;       
+            timeleft += 9;       
         }
     }
     var interval = setInterval(runTimer, 1000);
 }
 
 // FUNCTION TO CHECK IF ANSWERS ARE CORRECT AND KEEP TALLY
+// VARS FOR QUESTION ANSWERS
+var question1 = $("input.question1").val();
+var question2 = $("input.question2").val();
+var question3 = $("input.question3").val();
+var question4 = $("input.question4").val();
+var question5 = $("input.question5").val();
+
 function verify() {
     if ($("input[name=question1]:checked").val() === "3") {
         correct ++;
@@ -76,6 +82,7 @@ function display() {
 }
 
 // SUBMIT BUTTON CALL VERIFY FUNCTION AND DISPLAY SCORE
+// CALL PICTURE DISPLAY FUNCTION
 $("button#submit-button").on("click", function() {          
     verify();                                               
     $("h3#number-correct").text(correct + " Correct");       
