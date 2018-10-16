@@ -1,14 +1,10 @@
-#submitted {
+#submitted, #giphy {
     visibility: hidden;
 }
 
 #clock {
     float: center;
     font-size: 35px;
-}
-
-#giphy {
-    visibility: hidden;
 }
 
 input[type="radio"] {

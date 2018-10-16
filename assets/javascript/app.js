@@ -7,19 +7,21 @@ var clock = $("p#clock")
 var timer = 0;
 var timeleft = 9;
 
-// PLAY GAME BUTTON THAT CALLS CLOCK COUNTDOWN FUNCTION
-// RESET RADIO BUTTONS WHEN CLICKED
+// HIDE QUESTIONS AT STARTUP
 $("#questionaire").hide();
+
+// PLAY GAME BUTTON THAT CALLS CLOCK COUNTDOWN FUNCTION
 $("#start-button").on("click", function() {
     $("#questionaire").show();
     $("h1#jumbo").text("Totally Random Trivia!");
-    countDown();
     $("h3#number-correct").empty();       
     $("h3#number-incorrect").empty();
     correct = 0;
     incorrect = 0;
     $("h3#giphy").css("visibility", "hidden");
+    // RESET RADIO BUTTONS WHEN CLICKED
     $("input[type='radio']").prop("checked", false);
+    countDown();
 });
 
 // FUNCTION TO COUNT DOWN CLOCK FROM 10 SECS
@@ -32,13 +34,13 @@ function countDown() {
             clearInterval(interval); 
             $("h1#jumbo").empty();
             $("h1#jumbo").text("Times Up!");
-            timeleft += 9;       
+            timeleft += 9; 
+            $("#questionaire").hide();     
         }
     }
     var interval = setInterval(runTimer, 1000);
 }
 
-// FUNCTION TO CHECK IF ANSWERS ARE CORRECT AND KEEP TALLY
 // VARS FOR QUESTION ANSWERS
 var question1 = $("input.question1").val();
 var question2 = $("input.question2").val();
@@ -46,6 +48,7 @@ var question3 = $("input.question3").val();
 var question4 = $("input.question4").val();
 var question5 = $("input.question5").val();
 
+// FUNCTION TO CHECK IF ANSWERS ARE CORRECT AND KEEP TALLY
 function verify() {
     if ($("input[name=question1]:checked").val() === "3") {
         correct ++;
@@ -88,6 +91,7 @@ $("button#submit-button").on("click", function() {
     $("h3#number-correct").text(correct + " Correct");       
     $("h3#number-incorrect").text(incorrect + " Incorrect"); 
     $("#submitted").css("visibility", "visible");             
+    $("#questionaire").hide();
     display();
 })
 
